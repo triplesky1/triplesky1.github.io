@@ -14,8 +14,7 @@ it does not change GitHub settings or guarantee store approval.
 
 ## Remaining before publication
 
-- [Contact form draft and verification checklist](CONTACT-DRAFT.md) (not created or published).
-- Choose contact method and create the actual form if selected.
+- [Contact form draft and verification checklist](CONTACT-DRAFT.md): Google Form created, unpublished; end-to-end acceptance pending.
 - Review policy text, retention of inquiries, and effective date.
 - Verify download destinations and the features available in each public version.
 - Check desktop and mobile appearance and interactions.
