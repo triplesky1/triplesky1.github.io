@@ -39,7 +39,8 @@ submission has been performed.
 
 2026-10-20: Owner approved the remaining PC page content. Removed inquiry
 categories Suggestion and Other and improvement-request solicitation as requested.
-Platform's Other option remains an optional environment choice, not an inquiry category.
+Subsequent owner request: remove Type entirely, require Platform (Windows/Mac/iPhone/Android)
+and App version; Message remains required and Reply email remains optional.
 
 ## Apple release order
 

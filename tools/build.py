@@ -47,7 +47,9 @@ for path, title, english in [
     ('memogyt/support.html', 'Help and support', pages['memogyt/support-en.html']),
 ]:
     english = english.replace('to respond to inquiries and improve the product', 'to respond to and review inquiries')
+    english = english.replace('the submitted inquiry type and message, along with any optional platform, app version and reply email', 'the submitted message, platform and app version, along with an optional reply email')
     pages[path] = pages[path].replace('問い合わせ対応と製品改善のため', '問い合わせの対応・確認のため')
+    pages[path] = pages[path].replace('問い合わせの種類・本文と、任意の利用環境・アプリのバージョン・返信先メールアドレス', '問い合わせ本文・利用環境・アプリのバージョンと、任意の返信先メールアドレス')
     prefix = '../' * (len(Path(path).parts) - 1)
     nav = ''.join(f'<a href="{prefix}{target}">{label}</a>' for label, target in [('Apps','index.html'), ('Memogyt','memogyt/index.html'), ('Privacy','memogyt/privacy.html'), ('Support','memogyt/support.html')])
     japanese = language_links(pages[path]).replace('<h1>', '<h2>').replace('</h1>', '</h2>')
