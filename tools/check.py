@@ -4,7 +4,9 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 import sys
 
-root = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).parent / 'site').resolve()
+args = [arg for arg in sys.argv[1:] if arg != '--release']
+release = '--release' in sys.argv[1:]
+root = Path(args[0] if args else Path(__file__).resolve().parent.parent).resolve()
 
 class Page(HTMLParser):
     def __init__(self):
@@ -30,6 +32,10 @@ for path in files:
     assert content.index('id="english"') < content.index('id="japanese"')
     assert '<script' not in content.lower()
     assert '<form' not in content.lower(), 'Contact form remains pending'
+    if release:
+        assert 'Unpublished preview' not in content, 'Release blocked: unpublished draft notice remains'
+        assert 'contact method is being selected' not in content.lower(), 'Release blocked: contact is pending'
+        assert 'selected after review' not in content.lower(), 'Release blocked: contact is pending'
     page = Page()
     page.feed(content)
     parsed[path] = page

@@ -8,8 +8,13 @@ Open index.html on the local PC to review. English appears first; Japanese below
     python tools/build.py
     python tools/check.py .
 
+Before publication, also run `python tools/check.py --release`.
+It currently fails intentionally while draft notices remain. This check is manual;
+it does not change GitHub settings or guarantee store approval.
+
 ## Remaining before publication
 
+- [Contact form draft and verification checklist](CONTACT-DRAFT.md) (not created or published).
 - Choose contact method and create the actual form if selected.
 - Review policy text, retention of inquiries, and effective date.
 - Verify download destinations and the features available in each public version.
