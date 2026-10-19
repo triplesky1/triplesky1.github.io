@@ -26,15 +26,15 @@
 
 **Memogyt — Feedback / お問い合わせ**
 
-Report a problem or suggest an improvement. Individual replies, response times and fixes are not guaranteed. Do not include passwords, tokens, private notes or sensitive personal information. Your response is not publicly posted. If you want a reply, provide an email address below.
+Report a problem or contact us about privacy. Individual replies, response times and fixes are not guaranteed. Do not include passwords, tokens, private notes or sensitive personal information. Your response is not publicly posted. If you want a reply, provide an email address below.
 
-不具合や改善のご意見をお寄せください。個別の回答、回答期限、修正を保証するものではありません。パスワード、PAT、秘密のメモ、機密性の高い個人情報は入力しないでください。回答内容は一般公開しません。返信を希望する場合だけ、下のメール欄をご記入ください。
+不具合の報告、またはプライバシーについてお問い合わせいただけます。個別の回答、回答期限、修正を保証するものではありません。パスワード、PAT、秘密のメモ、機密性の高い個人情報は入力しないでください。回答内容は一般公開しません。返信を希望する場合だけ、下のメール欄をご記入ください。
 
 ## 入力項目
 
 | 項目 | 形式 | 必須 |
 |---|---|---|
-| Type / 種類 | Problem / 不具合、Suggestion / 改善案、Privacy / プライバシー、Other / その他 | はい |
+| Type / 種類 | Problem / 不具合、Privacy / プライバシー | はい |
 | Message / 内容 | 段落 | はい |
 | Platform / 利用環境 | Windows、Mac、iPhone、Other / その他 | いいえ |
 | App version / アプリのバージョン | 短文 | いいえ |

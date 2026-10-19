@@ -36,17 +36,24 @@ pages['memogyt/privacy-en.html'] = pages['memogyt/privacy-en.html'].replace('The
 
 english_home = '''<section><p class="eyebrow">SMALL TOOLS, EVERYDAY IDEAS</p><h1>Grow your ideas with AI.</h1><p class="lead">Memogyt is a notebook for the AI era, with cloud sync through GitHub.<br>Capture ideas offline, connect with your favorite AI, and turn a conversation into your next step.</p></section><article class="card"><h2>Memogyt</h2><p>Write offline and share when you are ready. Supports text and Markdown.</p><a class="button" href="memogyt/index.html">Explore Memogyt</a></article>'''
 english_intro = pages['memogyt/en.html'].replace('<h1>Capture ideas.<br>Keep them moving.</h1>', '<h1>Grow your ideas with AI.</h1>').replace('Memogyt saves notes on your device. Write offline, organize text and Markdown, and share an idea when you are ready.', 'Memogyt is a notebook for the AI era, with cloud sync through GitHub.<br>Capture ideas offline, connect with your favorite AI, and turn a conversation into your next step.')
+for name in ('memogyt/privacy.html', 'memogyt/support.html'):
+    pages[name] = pages[name].replace('公開する連絡方法を確認中です。この草稿をそのまま公開しません。', 'Googleフォームの問い合わせ窓口を準備しました。現在は未公開で、受付を開始していません。公開前の検証後、このページに問い合わせリンクを掲載します。').replace('公開する連絡方法はレビュー後に決めます。現在この草稿から問い合わせを送ることはできません。', 'Googleフォームの問い合わせ窓口を準備しました。現在は未公開で、受付を開始していません。公開前の検証後、このページに問い合わせリンクを掲載します。').replace('施行日と連絡先は未確定です。', '問い合わせフォームは作成済み・未公開です。施行日は公開前に確定します。')
+for name in ('memogyt/privacy-en.html', 'memogyt/support-en.html'):
+    pages[name] = pages[name].replace('A public contact method is being selected. This unfinished draft will not be published.', 'A Google Forms contact form has been prepared. It is unpublished and is not accepting inquiries. A contact link will be added here after pre-publication checks.').replace('The public contact method will be selected after review. This draft cannot accept requests.', 'A Google Forms contact form has been prepared. It is unpublished and is not accepting inquiries. A contact link will be added here after pre-publication checks.').replace('Effective date and contact method are pending.', 'The contact form has been created but remains unpublished. The effective date will be set before publication.')
 for path, title, english in [
     ('index.html', 'Apps', english_home),
     ('memogyt/index.html', 'Memogyt', english_intro),
     ('memogyt/privacy.html', 'Privacy policy', pages['memogyt/privacy-en.html']),
     ('memogyt/support.html', 'Help and support', pages['memogyt/support-en.html']),
 ]:
+    english = english.replace('to respond to inquiries and improve the product', 'to respond to and review inquiries')
+    pages[path] = pages[path].replace('問い合わせ対応と製品改善のため', '問い合わせの対応・確認のため')
     prefix = '../' * (len(Path(path).parts) - 1)
     nav = ''.join(f'<a href="{prefix}{target}">{label}</a>' for label, target in [('Apps','index.html'), ('Memogyt','memogyt/index.html'), ('Privacy','memogyt/privacy.html'), ('Support','memogyt/support.html')])
     japanese = language_links(pages[path]).replace('<h1>', '<h2>').replace('</h1>', '</h2>')
     html = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{escape(title)} | triplesky</title><link rel="stylesheet" href="{prefix}style.css"></head><body><header><a href="{prefix}index.html">triplesky / apps</a><nav aria-label="Main navigation">{nav}</nav></header><main><p class="notice">Unpublished preview. Contact details and effective date are pending.<br><span lang="ja">未公開のレビュー版です。連絡先・施行日は公開前に確定します。</span></p><nav aria-label="Page language"><a href="#english" lang="en">English</a><a href="#japanese" lang="ja">日本語 ↓</a></nav><section id="english" lang="en">{language_links(english)}</section><section id="japanese" lang="ja" aria-label="日本語"><hr><p class="eyebrow">日本語</p>{japanese}<p><a href="#english">English ↑</a></p></section></main><footer>triplesky · No advertising or analytics scripts on these pages.<br><span lang="ja">このページに広告・アクセス解析スクリプトはありません。</span><br><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a> — Hosting provider may process access information.<br><span lang="ja">公開時にはホスティング提供元がアクセス情報を取り扱います。</span></footer></body></html>'''
     out = root / path
+    html = html.replace('Contact details and effective date are pending.', 'The contact form remains unpublished. Final checks and effective date are pending.').replace('連絡先・施行日は公開前に確定します。', '問い合わせフォームは未公開です。最終確認・施行日の確定を残しています。')
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding='utf-8')
 print(f'Created 4 bilingual pages: {root}')

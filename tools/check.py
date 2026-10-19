@@ -36,6 +36,8 @@ for path in files:
         assert 'Unpublished preview' not in content, 'Release blocked: unpublished draft notice remains'
         assert 'contact method is being selected' not in content.lower(), 'Release blocked: contact is pending'
         assert 'selected after review' not in content.lower(), 'Release blocked: contact is pending'
+        assert 'not accepting inquiries' not in content.lower(), 'Release blocked: form not accepting inquiries'
+        assert 'effective date will be set' not in content.lower(), 'Release blocked: effective date is pending'
     page = Page()
     page.feed(content)
     parsed[path] = page
@@ -50,3 +52,6 @@ for path, page in parsed.items():
         if url.fragment:
             assert unquote(url.fragment) in parsed[target].ids, (path, link)
 print('PASS: 4 bilingual pages; local links, anchors and assets; no scripts or live forms.')
+if release:
+    support_links = parsed[root / 'memogyt' / 'support.html'].links
+    assert any(urlsplit(link).hostname in ('docs.google.com', 'forms.gle') and '/edit' not in link and '/preview' not in link for link in support_links), 'Release blocked: actual respondent contact link is missing'
