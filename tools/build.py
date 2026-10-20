@@ -47,8 +47,10 @@ for path, title, english in [
     ('memogyt/support.html', 'Help and support', pages['memogyt/support-en.html']),
 ]:
     english = english.replace('to respond to inquiries and improve the product', 'to respond to and review inquiries')
+    english = english.replace('Choose Share → AI, review the text', 'Choose Share, review the text')
     english = english.replace('the submitted inquiry type and message, along with any optional platform, app version and reply email', 'the submitted message, platform and app version, along with an optional reply email')
     pages[path] = pages[path].replace('問い合わせ対応と製品改善のため', '問い合わせの対応・確認のため')
+    pages[path] = pages[path].replace('共有 → AIで本文を確認し', '共有画面で本文を確認し')
     pages[path] = pages[path].replace('問い合わせの種類・本文と、任意の利用環境・アプリのバージョン・返信先メールアドレス', '問い合わせ本文・利用環境・アプリのバージョンと、任意の返信先メールアドレス')
     prefix = '../' * (len(Path(path).parts) - 1)
     nav = ''.join(f'<a href="{prefix}{target}">{label}</a>' for label, target in [('Apps','index.html'), ('Memogyt','memogyt/index.html'), ('Privacy','memogyt/privacy.html'), ('Support','memogyt/support.html')])
@@ -57,5 +59,14 @@ for path, title, english in [
     out = root / path
     html = html.replace('Contact details and effective date are pending.', 'The contact form remains unpublished. Final checks and effective date are pending.').replace('連絡先・施行日は公開前に確定します。', '問い合わせフォームは未公開です。最終確認・施行日の確定を残しています。')
     out.parent.mkdir(parents=True, exist_ok=True)
+    html = re.sub(r'<p class="notice">.*?</p>', '', html, flags=re.S)
+    contact = 'https://docs.google.com/forms/d/e/1FAIpQLSet1bD8G7HCHm2_j9xEV2aedFkF74O_YV11qMw7_Ln5_KOKvg/viewform'
+    html = html.replace('A Google Forms contact form has been prepared. It is unpublished and is not accepting inquiries. A contact link will be added here after pre-publication checks.', f'<a href="{contact}">Contact us using Google Forms</a>. Report bugs or ask about privacy. Your inquiry is not publicly posted.')
+    html = html.replace('Googleフォームの問い合わせ窓口を準備しました。現在は未公開で、受付を開始していません。公開前の検証後、このページに問い合わせリンクを掲載します。', f'<a href="{contact}">Googleフォームで問い合わせる</a>。不具合やプライバシーについてご連絡いただけます。問い合わせ内容は一般公開しません。')
+    html = html.replace('Draft for the upcoming Mac/iPhone version and AI sharing. The contact form has been created but remains unpublished. The effective date will be set before publication.', 'Effective date: October 20, 2026. This policy covers Memogyt, including the upcoming Mac/iPhone version and sharing features.')
+    html = html.replace('Mac/iPhone版・AI共有の公開に向けた草稿です。問い合わせフォームは作成済み・未公開です。施行日は公開前に確定します。', '施行日：2026年10月20日。Memogytおよび公開準備中のMac/iPhone版・共有機能について説明します。')
+    html = html.replace('対象：Memogytの公開準備中のMac／iPhone版およびAI共有機能。問い合わせフォームは作成済み・未公開です。施行日は公開前に確定します。', '施行日：2026年10月20日。Memogytおよび公開準備中のMac／iPhone版・共有機能について説明します。')
+    html = html.replace('We plan to use Google Forms for support inquiries. After publication,', 'We use Google Forms for support inquiries.').replace('問い合わせ窓口にはGoogleフォームを使用する予定です。公開後に利用者が送信した', '問い合わせ窓口にはGoogleフォームを使用します。利用者が送信した')
+    html = html.replace('公開時にはホスティング提供元が', 'ホスティング提供元が')
     out.write_text(html, encoding='utf-8')
 print(f'Created 4 bilingual pages: {root}')

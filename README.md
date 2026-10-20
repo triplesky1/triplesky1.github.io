@@ -1,4 +1,10 @@
-# triplesky website — private draft
+# triplesky website
+
+2026-10-20: Owner authorized publication of this website and the contact form.
+Four bilingual pages are ready for GitHub Pages. Google Forms accepts inquiries;
+a disposable submission with no reply email was received. Actual iPhone Safari
+and logged-out form access remain separate verification items. Historical draft
+notes below describe preparation, not the current publication permission.
 
 Keep this repository PRIVATE and GitHub Pages DISABLED until owner approval.
 Open index.html on the local PC to review. English appears first; Japanese below.
@@ -25,7 +31,7 @@ it does not change GitHub settings or guarantee store approval.
 
 | Priority | Task | Current boundary |
 |---|---|---|
-| P0 | Review phone layout | PC appearance, language links and page content approved by owner; phone check pending |
+| P0 | Check actual iPhone browser | Owner approved all four pages at normal and narrow PC widths, including language links. Actual Safari access remains pending |
 | P0 | Review final distribution URLs and per-version feature claims | No unverified download link is published |
 | P0 | Authorize contact-form publication and test receipt/deletion | Requires publication; not yet authorized |
 | P0 | Test actual respondent access without login | Preview settings alone do not prove this |
