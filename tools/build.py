@@ -67,6 +67,7 @@ for path, title, english in [
     html = html.replace('Mac/iPhone版・AI共有の公開に向けた草稿です。問い合わせフォームは作成済み・未公開です。施行日は公開前に確定します。', '施行日：2026年10月20日。Memogytおよび公開準備中のMac/iPhone版・共有機能について説明します。')
     html = html.replace('対象：Memogytの公開準備中のMac／iPhone版およびAI共有機能。問い合わせフォームは作成済み・未公開です。施行日は公開前に確定します。', '施行日：2026年10月20日。Memogytおよび公開準備中のMac／iPhone版・共有機能について説明します。')
     html = html.replace('We plan to use Google Forms for support inquiries. After publication,', 'We use Google Forms for support inquiries.').replace('問い合わせ窓口にはGoogleフォームを使用する予定です。公開後に利用者が送信した', '問い合わせ窓口にはGoogleフォームを使用します。利用者が送信した')
+    html = html.replace('inquiries. the developer', 'inquiries. The developer')
     html = html.replace('公開時にはホスティング提供元が', 'ホスティング提供元が')
     out.write_text(html, encoding='utf-8')
 print(f'Created 4 bilingual pages: {root}')
