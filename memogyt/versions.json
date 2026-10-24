@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "versions": {
+    "windows": "1.0.0",
+    "macos": "1.0.0",
+    "ios": "1.0.0"
+  }
+}
